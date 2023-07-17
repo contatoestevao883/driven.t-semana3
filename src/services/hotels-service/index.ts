@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Ticket } from '@prisma/client';
 import { notFoundError, paymentRequired, unauthorizedError } from '@/errors';
 import enrollmentRepository from '@/repositories/enrollment-repository';
@@ -22,16 +23,6 @@ async function getHotels(userId: number) {
   return hotel;
 }
 
-async function getTicketByUserId(userId: number): Promise<Ticket> {
-  const enrollment = await enrollmentRepository.findWithAddressByUserId(userId);
-  if (!enrollment) throw notFoundError();
-
-  const ticket = await ticketsRepository.findTicketByEnrollmentId(enrollment.id);
-  if (!ticket) throw notFoundError();
-
-  return ticket;
-}
-
-const hotelsService = { getHotels, getTicketByUserId };
+const hotelsService = { getHotels };
 
 export default hotelsService;
