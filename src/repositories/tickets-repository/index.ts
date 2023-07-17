@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { TicketStatus, TicketType } from '@prisma/client';
 import { prisma } from '@/config';
 import { CreateTicketParams } from '@/protocols';
